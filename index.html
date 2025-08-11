@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MultiFun - Juegos, Películas y Series</title>
+<style>
+    body {
+        margin: 0;
+        background-color: #d9dce1; /* gris claro suave y cómodo */
+        font-family: 'Comic Sans MS', cursive, sans-serif;
+        color: #333; /* texto gris oscuro para buena lectura */
+    }
+
+    /* Barra superior */
+    .topbar {
+        background-color: #2447f3; /* azul vivo */
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 3px solid #1a36c7; /* azul oscuro */
+    }
+
+    /* Logo como imagen */
+    .logo img {
+        height: 45px;
+        display: block;
+    }
+
+    .menu {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    select {
+        background-color: #1e38c5; /* azul oscuro para contraste */
+        color: white;
+        border: none;
+        padding: 8px;
+        font-size: 14px;
+        border-radius: 4px;
+        font-family: 'Comic Sans MS', cursive, sans-serif;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    select:hover, select:focus {
+        background-color: #3b60f5;
+        outline: none;
+    }
+
+    .search-box {
+        display: flex;
+        align-items: center;
+        background-color: #3b60f5; /* azul claro para armonía */
+        padding: 5px;
+        border-radius: 4px;
+    }
+
+    .search-box input {
+        border: none;
+        outline: none;
+        padding: 5px;
+        width: 180px;
+        font-family: 'Comic Sans MS', cursive, sans-serif;
+        background-color: rgba(255,255,255,0.9);
+        color: #333;
+        border-radius: 3px;
+        transition: background-color 0.3s ease;
+    }
+    .search-box input::placeholder {
+        color: #666;
+    }
+    .search-box input:focus {
+        background-color: #fff;
+    }
+
+    /* Texto central con efecto arcoíris tipo Sega CD */
+    .welcome {
+        text-align: center;
+        padding: 20px;
+        background: linear-gradient(270deg,
+            #4A86E8, #B13CFC, #F6358A, #FADA69, #5BE86E, #4A86E8);
+        background-size: 1200% 1200%;
+        animation: rainbowBG 10s ease infinite;
+        margin: 0 auto;
+        max-width: 900px;
+        border-radius: 8px;
+        color: white;
+        font-weight: bold;
+        text-shadow:
+            0 0 5px #fff,
+            0 0 10px #fff,
+            0 0 20px #4A86E8,
+            0 0 30px #B13CFC,
+            0 0 40px #F6358A,
+            0 0 50px #FADA69;
+        font-family: 'Comic Sans MS', cursive, sans-serif;
+    }
+
+    @keyframes rainbowBG {
+        0% {background-position: 0% 50%;}
+        50% {background-position: 100% 50%;}
+        100% {background-position: 0% 50%;}
+    }
+
+    /* Galería de juegos */
+    .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 8px;
+        padding: 20px;
+    }
+
+    .game {
+        background-color: #ddd; /* fondo claro para cada juego */
+        border-radius: 8px;
+        overflow: hidden;
+        cursor: pointer;
+        transition: transform 0.2s;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .game:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .game img {
+        width: 100%;
+        display: block;
+        border-radius: 8px 8px 0 0;
+    }
+
+    /* Footer */
+    footer {
+        text-align: center;
+        padding: 10px;
+        background-color: #2447f3; /* azul vivo */
+        color: rgba(255, 255, 255, 0.85); /* blanco suave para el footer */
+        font-size: 12px;
+        border-top: 3px solid #1a36c7; /* azul oscuro */
+        font-family: 'Comic Sans MS', cursive, sans-serif;
+        user-select: none;
+    }
+</style>
+</head>
+<body>
+
+<!-- Barra superior -->
+<div class="topbar">
+    <div class="logo">
+        <img src="https://file.garden/aJNPb2mKkT1CYHI3/images/logos/multifunlogo.png" alt="MultiFun Logo" />
+    </div>
+    <div class="menu">
+        <select id="menuSelect">
+            <option value="https://example.com/juegos">Todos los Juegos</option>
+            <option value="https://example.com/peliculas">Películas</option>
+            <option value="https://example.com/series">Series</option>
+        </select>
+        <div class="search-box">
+            <input type="text" placeholder="Buscar..." />
+        </div>
+    </div>
+</div>
+
+<!-- Texto de bienvenida con efecto arcoíris -->
+<div class="welcome">
+    <h2>Bienvenido a MultiFun</h2>
+    <p>Disfruta de los mejores juegos, películas y series online. Contenido actualizado constantemente para tu entretenimiento. ¡Diviértete!</p>
+</div>
+
+<!-- Galería -->
+<div class="gallery">
+    <div class="game"><a href="sonic1.html" target="_blank" rel="noopener"><img src="https://file.garden/aJNPb2mKkT1CYHI3/images/posters/segagenesis/sonic1.png" alt="sonic the hedgehog" /></a></div>
+    <div class="game"><a href="https://example.com/juego2" target="_blank" rel="noopener"><img src="https://via.placeholder.com/150x150?text=Juego+2" alt="Juego 2" /></a></div>
+    <div class="game"><a href="https://example.com/juego3" target="_blank" rel="noopener"><img src="https://via.placeholder.com/150x150?text=Juego+3" alt="Juego 3" /></a></div>
+    <div class="game"><a href="https://example.com/juego4" target="_blank" rel="noopener"><img src="https://via.placeholder.com/150x150?text=Juego+4" alt="Juego 4" /></a></div>
+    <div class="game"><a href="https://example.com/juego5" target="_blank" rel="noopener"><img src="https://via.placeholder.com/150x150?text=Juego+5" alt="Juego 5" /></a></div>
+    <div class="game"><a href="https://example.com/juego6" target="_blank" rel="noopener"><img src="https://via.placeholder.com/150x150?text=Juego+6" alt="Juego 6" /></a></div>
+    <div class="game"><a href="https://example.com/juego7" target="_blank" rel="noopener"><img src="https://via.placeholder.com/150x150?text=Juego+7" alt="Juego 7" /></a></div>
+    <div class="game"><a href="https://example.com/juego8" target="_blank" rel="noopener"><img src="https://via.placeholder.com/150x150?text=Juego+8" alt="Juego 8" /></a></div>
+</div>
+
+<!-- Footer -->
+<footer>
+    
+</footer>
+
+<script>
+document.getElementById('menuSelect').addEventListener('change', function() {
+    const url = this.value;
+    if(url) {
+        window.location.href = url;
+    }
+});
+</script>
+
+</body>
+</html>
