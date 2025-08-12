@@ -7,7 +7,7 @@
 <style>
     body {
         margin: 0;
-        background-color: #d9dce1; /* gris claro suave y cómodo */
+        background-color: #d9dce1;
         font-family: 'Comic Sans MS', cursive, sans-serif;
         color: #333;
     }
@@ -70,7 +70,7 @@
         background-color: #fff;
     }
 
-    /* Texto central con efecto arcoíris */
+    /* Texto central arcoíris */
     .welcome {
         text-align: center;
         padding: 20px;
@@ -83,7 +83,6 @@
         color: white;
         font-weight: bold;
         text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #4A86E8, 0 0 30px #B13CFC, 0 0 40px #F6358A, 0 0 50px #FADA69;
-        font-family: 'Comic Sans MS', cursive, sans-serif;
     }
     @keyframes rainbowBG {
         0% {background-position: 0% 50%;}
@@ -91,7 +90,7 @@
         100% {background-position: 0% 50%;}
     }
 
-    /* Galería horizontal */
+    /* Galería */
     .gallery {
         display: flex;
         gap: 10px;
@@ -118,6 +117,7 @@
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         flex: 0 0 auto;
         width: 180px;
+        text-align: center;
     }
     .game:hover {
         transform: scale(1.05);
@@ -128,6 +128,11 @@
         display: block;
         border-radius: 8px 8px 0 0;
     }
+    .game-title {
+        padding: 5px;
+        font-size: 14px;
+        font-weight: bold;
+    }
 
     /* Footer */
     footer {
@@ -137,7 +142,6 @@
         color: rgba(255, 255, 255, 0.85);
         font-size: 12px;
         border-top: 3px solid #1a36c7;
-        font-family: 'Comic Sans MS', cursive, sans-serif;
         user-select: none;
     }
 </style>
@@ -151,25 +155,24 @@
     </div>
     <div class="menu">
         <select id="menuSelect">
-            <option value="https://example.com/juegos">Home</option>
-            <option value="https://example.com/peliculas">Series</option>
-            <option value="https://example.com/series">Movies</option>
-            <option value="https://example.com/juegos">NES Games</option>
-            <option value="https://example.com/juegos">Sega Master System Games</option>
-            <option value="https://example.com/peliculas">GameBoy Games</option>
-            <option value="https://example.com/series">Sega Megadrive/Genesis Games</option>
-            <option value="https://example.com/juegos">SNES Games</option>
-            <option value="https://example.com/peliculas">Sega GameGear Games</option>
-            <option value="https://example.com/series">GameBoy Color Games</option>
-            <option value="https://example.com/juegos">Sony Playstation Games</option>
-            <option value="https://example.com/peliculas">Nintendo 64 Games</option>
-            <option value="https://example.com/peliculas">GameBoy Advance Games</option>
-            <option value="https://example.com/peliculas">Nintendo DS Games</option>
-            <option value="https://example.com/peliculas">HTML5 Games</option>
-            <option value="https://example.com/series">Flash Games</option>
+            <option value="series.html">Series</option>
+            <option value="movies.html">Movies</option>
+            <option value="nesgames.html">NES Games</option>
+            <option value="smsgames.html">Sega Master System Games</option>
+            <option value="gameboygames.html">GameBoy Games</option>
+            <option value="segamdgames.html">Sega Megadrive/Genesis Games</option>
+            <option value="snesgames.html">SNES Games</option>
+            <option value="gamegeargames.html">Sega GameGear Games</option>
+            <option value="gbcgames.html">GameBoy Color Games</option>
+            <option value="psxgames.html">Sony Playstation Games</option>
+            <option value="nintendo64games.html">Nintendo 64 Games</option>
+            <option value="gbagames.html">GameBoy Advance Games</option>
+            <option value="ndsgames.html">Nintendo DS Games</option>
+            <option value="html5games.html">HTML5 Games</option>
+            <option value="flashgames.html">Flash Games</option>
         </select>
         <div class="search-box">
-            <input type="text" placeholder="Search..." />
+            <input id="searchInput" type="text" placeholder="Search games..." />
         </div>
     </div>
 </div>
@@ -180,48 +183,59 @@
     <p>Enjoy the best games, movies and series online. Constantly updated content for your entertainment. Have fun!</p>
 </div>
 
-<!-- Galería de juegos -->
-<div class="gallery">
+<!-- Galería -->
+<div id="gallery" class="gallery">
     <div class="game">
         <a href="sonic1.html">
             <img src="https://file.garden/aJNPb2mKkT1CYHI3/images/posters/segagenesis/sonic1.png" alt="Sonic the Hedgehog" />
+            <div class="game-title">Sonic the Hedgehog</div>
         </a>
     </div>
     <div class="game">
         <a href="sonic2.html">
             <img src="https://file.garden/aJNPb2mKkT1CYHI3/images/posters/segagenesis/sonic2.png" alt="Sonic the Hedgehog 2" />
+            <div class="game-title">Sonic the Hedgehog 2</div>
         </a>
     </div>
     <div class="game">
         <a href="sonic3.html">
             <img src="https://file.garden/aJNPb2mKkT1CYHI3/images/posters/segagenesis/sonic3.png" alt="Sonic the Hedgehog 3" />
+            <div class="game-title">Sonic the Hedgehog 3</div>
         </a>
     </div>
     <div class="game">
         <a href="soniccd.html">
             <img src="https://file.garden/aJNPb2mKkT1CYHI3/images/posters/segagenesis/soniccd.png" alt="Sonic CD" />
+            <div class="game-title">Sonic CD</div>
         </a>
     </div>
 </div>
 
 <!-- Footer -->
 <footer>
-    
+    &copy; 2025 MultiFun. All rights reserved.
 </footer>
 
 <script>
+// Menú desplegable
 document.getElementById('menuSelect').addEventListener('change', function() {
     const url = this.value;
     if(url) {
         window.location.href = url;
     }
 });
+
+// Buscador interno
+document.getElementById('searchInput').addEventListener('input', function() {
+    const searchText = this.value.toLowerCase();
+    const games = document.querySelectorAll('#gallery .game');
+
+    games.forEach(game => {
+        const title = game.querySelector('.game-title').textContent.toLowerCase();
+        game.style.display = title.includes(searchText) ? 'inline-block' : 'none';
+    });
+});
 </script>
 
 </body>
 </html>
-
-
-
-
-
