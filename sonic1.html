@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sonic the Hedgehog</title>
+<style>
+    body {
+        margin: 0;
+        background-color: #d9dce1; /* gris claro suave y cómodo */
+        font-family: 'Comic Sans MS', cursive, sans-serif;
+        color: #333; /* texto gris oscuro para buena lectura */
+    }
+
+    /* Barra superior */
+    .topbar {
+        background-color: #2447f3; /* azul vivo */
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 3px solid #1a36c7; /* azul oscuro */
+    }
+
+    /* Logo como imagen */
+    .logo img {
+        height: 45px;
+        display: block;
+    }
+
+    .menu {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    select {
+        background-color: #1e38c5; /* azul oscuro para contraste */
+        color: white;
+        border: none;
+        padding: 8px;
+        font-size: 14px;
+        border-radius: 4px;
+        font-family: 'Comic Sans MS', cursive, sans-serif;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    select:hover, select:focus {
+        background-color: #3b60f5;
+        outline: none;
+    }
+
+    .search-box {
+        display: flex;
+        align-items: center;
+        background-color: #3b60f5; /* azul claro para armonía */
+        padding: 5px;
+        border-radius: 4px;
+    }
+
+    .search-box input {
+        border: none;
+        outline: none;
+        padding: 5px;
+        width: 180px;
+        font-family: 'Comic Sans MS', cursive, sans-serif;
+        background-color: rgba(255,255,255,0.9);
+        color: #333;
+        border-radius: 3px;
+        transition: background-color 0.3s ease;
+    }
+    .search-box input::placeholder {
+        color: #666;
+    }
+    .search-box input:focus {
+        background-color: #fff;
+    }
+
+    /* Contenido del juego */
+    .game-container {
+        max-width: 1000px;
+        margin: 20px auto;
+        background-color: #f0f2f5; /* un fondo muy claro para la caja */
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+        color: #333;
+    }
+
+    /* Contenedor del emulador */
+    #game {
+        width: 100%;
+        height: 600px;
+        background-color: black;
+        border-radius: 6px;
+        box-shadow: 0 0 10px rgba(36, 71, 243, 0.6);
+        margin-bottom: 20px;
+    }
+
+    /* Título del juego */
+    .game-title {
+        font-size: 28px;
+        font-weight: bold;
+        color: #2447f3; /* azul */
+        margin-bottom: 8px; /* espacio pequeño entre título y descripción */
+        font-family: 'Comic Sans MS', cursive, sans-serif;
+        text-align: center;
+    }
+
+    /* Descripción del juego */
+    .game-description {
+        background-color: #dde1e7; /* gris muy suave */
+        padding: 15px;
+        border-radius: 6px;
+        margin-bottom: 20px;
+        font-family: 'Comic Sans MS', cursive, sans-serif;
+        color: #333;
+        text-align: center;
+    }
+
+    /* Botones */
+    .buttons {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .btn {
+        background-color: #2447f3;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+        font-family: 'Comic Sans MS', cursive, sans-serif;
+        text-decoration: none;
+        transition: background 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        box-shadow: 0 2px 6px rgba(36, 71, 243, 0.7);
+    }
+
+    .btn:hover {
+        background-color: #1a36c7;
+    }
+
+    .btn img {
+        height: 18px;
+        width: 18px;
+        vertical-align: middle;
+    }
+
+    /* Instrucciones */
+    .instructions {
+        display: none;
+        background-color: #cbd2e0;
+        padding: 10px;
+        margin-top: 10px;
+        border-radius: 6px;
+        font-family: 'Comic Sans MS', cursive, sans-serif;
+        color: #333;
+    }
+
+    /* Comentarios */
+    #comments {
+        margin-top: 20px;
+    }
+
+    /* Footer */
+    footer {
+        text-align: center;
+        padding: 10px;
+        background-color: #2447f3; /* azul vivo */
+        color: rgba(255, 255, 255, 0.85); /* blanco suave */
+        font-size: 12px;
+        border-top: 3px solid #1a36c7; /* azul oscuro */
+        font-family: 'Comic Sans MS', cursive, sans-serif;
+        user-select: none;
+        margin-top: 20px;
+    }
+</style>
+</head>
+<body>
+
+<!-- Barra superior -->
+<div class="topbar">
+    <div class="logo">
+        <a href="index.html"><img src="https://file.garden/aJNPb2mKkT1CYHI3/images/logos/multifunlogo.png" alt="MultiFun" /></a>
+    </div>
+    <div class="menu">
+        <select id="menuSelect">
+            <option value="https://example.com/juegos">Home</option>
+            <option value="https://example.com/peliculas">Series</option>
+            <option value="https://example.com/series">Movies</option>
+            <option value="https://example.com/juegos">NES Games</option>
+            <option value="https://example.com/juegos">Sega Master System Games</option>
+            <option value="https://example.com/peliculas">GameBoy Games</option>
+            <option value="https://example.com/series">Sega Megadrive/Genesis Games</option>
+            <option value="https://example.com/juegos">SNES Games</option>
+            <option value="https://example.com/peliculas">Sega GameGear Games</option>
+            <option value="https://example.com/series">GameBoy Color Games</option>
+            <option value="https://example.com/juegos">Sony Playstation Games</option>
+            <option value="https://example.com/peliculas">Nintendo 64 Games</option>
+            <option value="https://example.com/peliculas">GameBoy Advance Games</option>
+            <option value="https://example.com/peliculas">Nintendo DS Games</option>
+            <option value="https://example.com/peliculas">HTML5 Games</option>
+            <option value="https://example.com/series">Flash Games</option>
+        </select>
+        <div class="search-box">
+            <input type="text" placeholder="Search..." />
+        </div>
+    </div>
+</div>
+
+<!-- Contenido -->
+<div class="game-container">
+
+    <!-- Emulador -->
+    <div style="width:100%; height:600px; max-width:100%">
+        <div id="game"></div>
+    </div>
+
+    <script>
+        EJS_player = "#game";
+        EJS_core = "segaMD";
+        EJS_startOnLoaded = true;
+        EJS_gameUrl = "https://cdn.jsdelivr.net/gh/thered72/mgfil3s9218-.@main/Sega%20Genesis/Sonic%20The%20Hedgehog%20(Japan%2C%20Korea)%20(1).zip";
+        EJS_pathtodata = "https://cdn.emulatorjs.org/4.2.3/data/";
+        EJS_backgroundImage = "https://cdn.jsdelivr.net/gh/thered72/mgfil3s9218-.@main/funni%20images/sonicthehedgehoglogo.webp";
+        EJS_gameName = "SonicTheHedgehog";
+        EJS_color = "#2447f3";
+        EJS_language = "en-US";
+        EJS_backgroundBlur = false;
+        EJS_Buttons = {
+            exitEmulation: false,
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/gh/thered72/mgfil3s9218-.@main/multifunemulatorloader.js"></script>
+
+    <!-- Título debajo del juego -->
+    <div class="game-title">Sonic the Hedgehog</div>
+
+    <!-- Descripción debajo del título -->
+    <div class="game-description">
+        <p>Sonic the Hedgehog is the first of many games starring Sega's premier hedgehog, Sonic. It's a side-scrolling platform game with a difference: speed. Sonic rushes through levels with incredible speed, allowing him to traverse loops and jumps with ease.
+
+The plot of the game is simple. The evil Dr. Robotnik has captured many of Sonic's animal friends and trapped them inside robots. Fortunately, Sonic can free his friends by destroying the robots with his spin attack. Meanwhile, Dr. Robotnik is trying to control the all-powerful chaos emeralds. Sonic must grab them before he does in the 3D rotating bonus levels.</p>
+    </div>
+
+    <!-- Botones -->
+    <div class="buttons">
+        <button class="btn" onclick="toggleInstructions()">
+            <img src="https://file.garden/aJNPb2mKkT1CYHI3/images/icons/paperinstructionsicon.svg" alt="Instructions" /> Instructions
+        </button>
+        <button class="btn" onclick="toggleComments()">
+            <img src="https://file.garden/aJNPb2mKkT1CYHI3/images/icons/chatcommentsicon.svg" alt="Comments" /> Comments
+        </button>
+    </div>
+
+    <!-- Lista de instrucciones -->
+    <div id="instructions" class="instructions">
+        <ul>
+            <li>⬅️⬆️⬇️➡️ - Move</li>
+            <li>Start/Pause = Enter</li>
+            <li>A = Z</li>
+            <li>B = X</li>
+            <li>X = A</li>
+            <li>Y = S</li>
+        </ul>
+    </div>
+
+    <!-- Caja de comentarios Disqus -->
+    <div id="comments" style="display:none;">
+        <div id="disqus_thread"></div>
+        <script>
+            var disqus_config = function () {
+                this.page.url = "https://theredguy90.github.io/multifun/sonic1.html";
+                this.page.identifier = "sonic1.html";
+            };
+
+            (function () {
+                var d = document,
+                    s = d.createElement("script");
+                s.src = "https://multi-fun-1.disqus.com/embed.js";
+                s.setAttribute("data-timestamp", +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+        <noscript>
+            Por favor, habilita JavaScript para ver los
+            <a href="https://disqus.com" rel="nofollow">comments</a>.
+        </noscript>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer> </footer>
+
+<script>
+    function toggleInstructions() {
+        const inst = document.getElementById("instructions");
+        inst.style.display = inst.style.display === "none" || inst.style.display === "" ? "block" : "none";
+    }
+
+    function toggleComments() {
+        const com = document.getElementById("comments");
+        com.style.display = com.style.display === "none" || com.style.display === "" ? "block" : "none";
+    }
+</script>
+
+</body>
+</html>
+
+
+
+
