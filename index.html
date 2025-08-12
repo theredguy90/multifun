@@ -9,33 +9,29 @@
         margin: 0;
         background-color: #d9dce1; /* gris claro suave y cómodo */
         font-family: 'Comic Sans MS', cursive, sans-serif;
-        color: #333; /* texto gris oscuro para buena lectura */
+        color: #333;
     }
 
     /* Barra superior */
     .topbar {
-        background-color: #2447f3; /* azul vivo */
+        background-color: #2447f3;
         padding: 10px;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        border-bottom: 3px solid #1a36c7; /* azul oscuro */
+        border-bottom: 3px solid #1a36c7;
     }
-
-    /* Logo como imagen */
     .logo img {
         height: 45px;
         display: block;
     }
-
     .menu {
         display: flex;
         align-items: center;
         gap: 10px;
     }
-
     select {
-        background-color: #1e38c5; /* azul oscuro para contraste */
+        background-color: #1e38c5;
         color: white;
         border: none;
         padding: 8px;
@@ -49,15 +45,13 @@
         background-color: #3b60f5;
         outline: none;
     }
-
     .search-box {
         display: flex;
         align-items: center;
-        background-color: #3b60f5; /* azul claro para armonía */
+        background-color: #3b60f5;
         padding: 5px;
         border-radius: 4px;
     }
-
     .search-box input {
         border: none;
         outline: none;
@@ -76,12 +70,11 @@
         background-color: #fff;
     }
 
-    /* Texto central con efecto arcoíris tipo Sega CD */
+    /* Texto central con efecto arcoíris */
     .welcome {
         text-align: center;
         padding: 20px;
-        background: linear-gradient(270deg,
-            #4A86E8, #B13CFC, #F6358A, #FADA69, #5BE86E, #4A86E8);
+        background: linear-gradient(270deg,#4A86E8,#B13CFC,#F6358A,#FADA69,#5BE86E,#4A86E8);
         background-size: 1200% 1200%;
         animation: rainbowBG 10s ease infinite;
         margin: 0 auto;
@@ -89,44 +82,47 @@
         border-radius: 8px;
         color: white;
         font-weight: bold;
-        text-shadow:
-            0 0 5px #fff,
-            0 0 10px #fff,
-            0 0 20px #4A86E8,
-            0 0 30px #B13CFC,
-            0 0 40px #F6358A,
-            0 0 50px #FADA69;
+        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #4A86E8, 0 0 30px #B13CFC, 0 0 40px #F6358A, 0 0 50px #FADA69;
         font-family: 'Comic Sans MS', cursive, sans-serif;
     }
-
     @keyframes rainbowBG {
         0% {background-position: 0% 50%;}
         50% {background-position: 100% 50%;}
         100% {background-position: 0% 50%;}
     }
 
-    /* Galería de juegos */
+    /* Galería horizontal */
     .gallery {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-        gap: 8px;
+        display: flex;
+        gap: 10px;
+        overflow-x: auto;
         padding: 20px;
+    }
+    .gallery::-webkit-scrollbar {
+        height: 8px;
+    }
+    .gallery::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 4px;
+    }
+    .gallery::-webkit-scrollbar-thumb:hover {
+        background: #555;
     }
 
     .game {
-        background-color: #ddd; /* fondo claro para cada juego */
+        background-color: #ddd;
         border-radius: 8px;
         overflow: hidden;
         cursor: pointer;
         transition: transform 0.2s;
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        flex: 0 0 auto;
+        width: 180px;
     }
-
     .game:hover {
         transform: scale(1.05);
         box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
-
     .game img {
         width: 100%;
         display: block;
@@ -137,10 +133,10 @@
     footer {
         text-align: center;
         padding: 10px;
-        background-color: #2447f3; /* azul vivo */
-        color: rgba(255, 255, 255, 0.85); /* blanco suave para el footer */
+        background-color: #2447f3;
+        color: rgba(255, 255, 255, 0.85);
         font-size: 12px;
-        border-top: 3px solid #1a36c7; /* azul oscuro */
+        border-top: 3px solid #1a36c7;
         font-family: 'Comic Sans MS', cursive, sans-serif;
         user-select: none;
     }
@@ -165,34 +161,39 @@
     </div>
 </div>
 
-<!-- Texto de bienvenida con efecto arcoíris -->
+<!-- Texto de bienvenida -->
 <div class="welcome">
     <h2>Bienvenido a MultiFun</h2>
     <p>Disfruta de los mejores juegos, películas y series online. Contenido actualizado constantemente para tu entretenimiento. ¡Diviértete!</p>
 </div>
 
-<!-- Galería -->
+<!-- Galería de juegos -->
 <div class="gallery">
     <div class="game">
         <a href="sonic1.html">
-            <img src="https://file.garden/aJNPb2mKkT1CY3/images/posters/segagenesis/sonic1.png" alt="sonic the hedgehog" />
+            <img src="https://file.garden/aJNPb2mKkT1CYHI3/images/posters/segagenesis/sonic1.png" alt="Sonic the Hedgehog" />
         </a>
     </div>
     <div class="game">
         <a href="sonic2.html">
-            <img src="https://file.garden/aJNPb2mKkT1CY3/images/posters/segagenesis/sonic2.png" alt="sonic the hedgehog 2" />
+            <img src="https://file.garden/aJNPb2mKkT1CYHI3/images/posters/segagenesis/sonic2.png" alt="Sonic the Hedgehog 2" />
         </a>
     </div>
     <div class="game">
         <a href="sonic3.html">
-            <img src="https://file.garden/aJNPb2mKkT1CY3/images/posters/segagenesis/sonic3.png" alt="sonic the hedgehog 3" />
+            <img src="https://file.garden/aJNPb2mKkT1CYHI3/images/posters/segagenesis/sonic3.png" alt="Sonic the Hedgehog 3" />
+        </a>
+    </div>
+    <div class="game">
+        <a href="soniccd.html">
+            <img src="https://file.garden/aJNPb2mKkT1CYHI3/images/posters/segagenesis/soniccd.png" alt="Sonic CD" />
         </a>
     </div>
 </div>
 
 <!-- Footer -->
 <footer>
-    
+    © 2025 MultiFun - Todos los derechos reservados
 </footer>
 
 <script>
@@ -206,5 +207,6 @@ document.getElementById('menuSelect').addEventListener('change', function() {
 
 </body>
 </html>
+
 
 
