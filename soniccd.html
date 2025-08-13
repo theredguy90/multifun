@@ -236,14 +236,22 @@
     </div>
 
     <!-- Botones -->
-    <div class="buttons">
-        <button class="btn" onclick="toggleInstructions()">
-            <img src="https://file.garden/aJNPb2mKkT1CYHI3/images/icons/paperinstructionsicon.svg" alt="Instructions" /> Instructions
-        </button>
-        <button class="btn" onclick="toggleComments()">
-            <img src="https://file.garden/aJNPb2mKkT1CYHI3/images/icons/chatcommentsicon.svg" alt="Comments" /> Comments
-        </button>
-    </div>
+    <!-- Botones -->
+<div class="buttons">
+    <button class="btn" onclick="toggleInstructions()">
+        <img src="https://file.garden/aJNPb2mKkT1CYHI3/images/icons/paperinstructionsicon.svg" alt="Instructions" /> Instructions
+    </button>
+
+    <!-- Fullscreen Button -->
+    <button class="btn" onclick="toggleFullscreen()">
+        <img src="https://file.garden/aJNPb2mKkT1CYHI3/images/icons/fullscreen.svg" alt="Fullscreen" /> Fullscreen
+    </button>
+
+    <button class="btn" onclick="toggleComments()">
+        <img src="https://file.garden/aJNPb2mKkT1CYHI3/images/icons/chatcommentsicon.svg" alt="Comments" /> Comments
+    </button>
+</div>
+
 
     <!-- Lista de instrucciones -->
     <div id="instructions" class="instructions">
@@ -292,10 +300,24 @@
         const com = document.getElementById("comments");
         com.style.display = com.style.display === "none" || com.style.display === "" ? "block" : "none";
     }
+    
+    function toggleFullscreen() {
+    const iframe = document.getElementById("game");
+    if (iframe.requestFullscreen) {
+        iframe.requestFullscreen();
+    } else if (iframe.mozRequestFullScreen) { // Firefox
+        iframe.mozRequestFullScreen();
+    } else if (iframe.webkitRequestFullscreen) { // Chrome, Safari, Opera
+        iframe.webkitRequestFullscreen();
+    } else if (iframe.msRequestFullscreen) { // IE/Edge
+        iframe.msRequestFullscreen();
+    }
+}
 </script>
 
 </body>
 </html>
+
 
 
 
