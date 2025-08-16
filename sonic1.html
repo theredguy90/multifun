@@ -334,13 +334,14 @@ select:hover, select:focus {
     setActiveTab(commentsBtn);
 
     if (!disqusLoaded) {
-      var disqus_config = function () {
+      // ✅ define disqus_config here
+      window.disqus_config = function () {
         this.page.url = window.location.href;
         this.page.identifier = window.location.pathname;
       };
 
       var d = document, s = d.createElement('script');
-      s.src = 'https://multi-fun-1.disqus.com/embed.js'; // your Disqus shortname
+      s.src = 'https://multi-fun-1.disqus.com/embed.js'; // replace with your real shortname
       s.setAttribute('data-timestamp', +new Date());
       (d.head || d.body).appendChild(s);
 
@@ -350,5 +351,6 @@ select:hover, select:focus {
 </script>
 </body>
 </html>
+
 
 
