@@ -16,59 +16,26 @@ body {
   color: #fff;
 }
 
-/* TOP BAR */
-.topbar {
-  background: #000;
-  border-bottom: 2px solid #b60000;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 6px 12px;
-}
-.logo img {
-  height: 40px;
-}
-.topbar-right {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-select {
-  background: #c00;
-  color: #fff;
-  border: none;
-  padding: 5px 8px;
-  font-size: 14px;
-  border-radius: 3px;
-}
-.search-box {
-  background: #ff0;
-  padding: 2px;
-  border-radius: 3px;
-}
-.search-box input {
-  border: none;
-  outline: none;
-  padding: 4px;
-  font-size: 13px;
-}
-
 /* LAYOUT */
 .container {
   display: flex;
-  padding: 10px;
+  justify-content: center;
+  margin-top: 10px;
   gap: 12px;
 }
 
 /* MAIN GAME AREA */
 .game-frame {
-  flex: 1;
+  width: 800px;
+  background: #222;
+  border: 2px solid #b60000;
 }
 .game-header {
   background: #b60000;
   color: #fff;
   padding: 6px 10px;
   font-weight: bold;
+  font-size: 14px;
 }
 .game-embed {
   background: #111;
@@ -76,7 +43,6 @@ select {
   justify-content: center;
   align-items: center;
   height: 480px;
-  border: 2px solid #b60000;
 }
 #game {
   width: 100%;
@@ -91,6 +57,7 @@ select {
   background: #b60000;
   padding: 6px 10px;
   font-weight: bold;
+  font-size: 14px;
 }
 .related-games {
   display: grid;
@@ -109,34 +76,44 @@ select {
   border-color: #f90;
 }
 
-/* GAME INFO TABS */
+/* GAME INFO SECTION */
 .info-section {
-  background: #222;
-  margin: 12px;
+  background: #000;
+  margin: 12px auto;
   padding: 8px;
+  width: 1040px;
+  border: 2px solid #222;
 }
 .tabs {
   display: flex;
-  gap: 8px;
   margin-bottom: 8px;
 }
 .tabs button {
   background: #111;
   border: 1px solid #444;
   color: #fff;
-  padding: 6px 10px;
+  padding: 6px 12px;
   cursor: pointer;
+  font-size: 13px;
 }
 .tabs button:hover {
   background: #b60000;
 }
 .tab-content {
-  font-size: 14px;
-  line-height: 1.4;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #ddd;
 }
 .tab-content span {
   color: yellow;
+  font-weight: bold;
 }
+.like-bar {
+  margin-top: 10px;
+  font-size: 13px;
+}
+.like-bar span.green { color: #5f5; }
+.like-bar span.red { color: #f55; }
 
 /* FOOTER */
 footer {
@@ -151,28 +128,13 @@ footer {
 </head>
 <body>
 
-<!-- TOPBAR -->
-<div class="topbar">
-  <div class="logo">
-    <img src="https://file.garden/aJNPb2mKkT1CYHI3/images/logos/multifunlogo.png" alt="MultiFun Logo">
-  </div>
-  <div class="topbar-right">
-    <select>
-      <option>All Games</option>
-    </select>
-    <div class="search-box">
-      <input type="text" placeholder="Search...">
-    </div>
-  </div>
-</div>
-
 <!-- MAIN CONTENT -->
 <div class="container">
   <!-- LEFT GAME AREA -->
   <div class="game-frame">
     <div class="game-header">Play Sonic 2 PN Arcade</div>
     <div class="game-embed">
-      <!-- Emulator inserted here -->
+      <!-- Emulator inside -->
       <div style="width:100%;height:100%;max-width:100%">
         <div id="game"></div>
       </div>
@@ -208,7 +170,12 @@ footer {
     <p><b>Date Added:</b> 2021-10-21</p>
     <p><b>Genres:</b> Adventure Games, Sonic Games</p>
     <p><b>Description:</b> Sonic 2 PN Arcade is a neat Sonic The Hedgehog 2 revision that features new levels, color pallets, music, and more. This is still the beta version but it's looking good so far. This revision was created by classic sonic modder PikaNoob.</p>
-    <p><b>Game Controls:</b> <span>Enter Key</span> = Start. <span>Shift Key</span> = Select. Arrow Keys = Move. <span>Z</span> and <span>X</span> Keys are action buttons. <span>Save</span> Progress State = [Shift+F2]. Load Progress State = [Shift+F4].</p>
+    <p><b>Game Controls:</b> <span>Enter Key</span> = Start. <span>Shift Key</span> = Select. Arrow Keys = Move. <span>Z</span> and <span>X</span> Keys are action buttons. <span>Save</span> Progress State = [Shift+F2]. <span>Load</span> Progress State = [Shift+F4].</p>
+    <div class="like-bar">
+      Do you like this game? 
+      <span class="green">👍 82%</span> 
+      <span class="red">👎</span>
+    </div>
   </div>
 </div>
 
@@ -238,3 +205,4 @@ footer {
 
 </body>
 </html>
+
