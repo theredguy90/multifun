@@ -16,7 +16,30 @@ body {
   color: #fff;
 }
 
-/* LAYOUT */
+/* TOP NAVBAR */
+.topbar {
+  background: #b60000;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.topbar .logo {
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff;
+}
+.topbar nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 15px;
+  font-size: 14px;
+}
+.topbar nav a:hover {
+  text-decoration: underline;
+}
+
+/* MAIN LAYOUT */
 .container {
   display: flex;
   justify-content: center;
@@ -42,7 +65,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 480px;
+  height: 600px; /* 4:3 ratio */
 }
 #game {
   width: 100%;
@@ -127,6 +150,18 @@ footer {
 </style>
 </head>
 <body>
+
+<!-- TOP MENU -->
+<div class="topbar">
+  <div class="logo">MultiFun</div>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">All Games</a>
+    <a href="#">Categories</a>
+    <a href="#">Random</a>
+    <a href="#">Contact</a>
+  </nav>
+</div>
 
 <!-- MAIN CONTENT -->
 <div class="container">
