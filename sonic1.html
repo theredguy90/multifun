@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+<!DOCTYPE html>  
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MultiFun - Play Sonic 2 PN Arcade</title>
+<title>MultiFun - Play Sonic the Hedgehog</title>
 <link rel="icon" href="favicon.png">
 <style>
 /* RESET */
@@ -11,33 +11,74 @@
 
 /* BODY */
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: #3d3d3d;
+   font-family: 'Comic Sans MS', cursive, sans-serif;
+  background-color: #dfdfdf;
   color: #fff;
+  cursor: url('https://file.garden/aJNPb2mKkT1CYHI3/images/mouse/mouse.cur'), auto;
+}
+
+/* INTERACTIVE ELEMENT CURSOR */
+a, button, select, input, .related-games img {
+  cursor: url('https://file.garden/aJNPb2mKkT1CYHI3/images/mouse/mousepoint.cur'), pointer;
 }
 
 /* TOP NAVBAR */
 .topbar {
-  background: #b60000;
-  padding: 10px 20px;
+  background-color: #111;
+  background-image: url('https://file.garden/aJNPb2mKkT1CYHI3/images/WEBSITE/costume3.svg');
+  background-repeat: repeat-x;
+  background-position: center;
+  background-size: auto 100%;
+  padding: 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  border-bottom: 3px solid rgba(0,0,0,0.25);
 }
-.topbar .logo {
-  font-size: 20px;
-  font-weight: bold;
-  color: #fff;
+.logo img {
+  height: 45px;
+  display: block;
 }
-.topbar nav a {
-  color: #fff;
-  text-decoration: none;
-  margin-left: 15px;
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+select {
+  background-color: rgba(0, 0, 0, 0.55);
+  color: white;
+  border: none;
+  padding: 8px;
   font-size: 14px;
+  border-radius: 4px;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  cursor: url('https://file.garden/aJNPb2mKkT1CYHI3/images/mouse/mousepoint.cur'), pointer;
+  transition: background-color 0.2s ease;
 }
-.topbar nav a:hover {
-  text-decoration: underline;
+select:hover, select:focus {
+  background-color: rgba(0, 0, 0, 0.75);
+  outline: none;
 }
+.search-box {
+  display: flex;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.55);
+  padding: 5px;
+  border-radius: 4px;
+}
+.search-box input {
+  border: none;
+  outline: none;
+  padding: 5px;
+  width: 180px;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  background-color: rgba(255,255,255,0.9);
+  color: #333;
+  border-radius: 3px;
+  transition: background-color 0.2s ease;
+}
+.search-box input::placeholder { color: #666; }
+.search-box input:focus { background-color: #fff; }
 
 /* MAIN LAYOUT */
 .container {
@@ -51,10 +92,10 @@ body {
 .game-frame {
   width: 800px;
   background: #222;
-  border: 2px solid #b60000;
+  border: 2px solid #2447f3;
 }
 .game-header {
-  background: #b60000;
+  background: #2447f3;
   color: #fff;
   padding: 6px 10px;
   font-weight: bold;
@@ -77,7 +118,7 @@ body {
   width: 220px;
 }
 .sidebar-header {
-  background: #b60000;
+  background: #2447f3;
   padding: 6px 10px;
   font-weight: bold;
   font-size: 14px;
@@ -87,13 +128,13 @@ body {
   grid-template-columns: repeat(2, 1fr);
   gap: 6px;
   padding: 6px;
-  background: #222;
+  background: #dfdfdf;
 }
 .related-games img {
   width: 100%;
   border-radius: 4px;
-  cursor: pointer;
-  border: 2px solid #333;
+  cursor: url('https://file.garden/aJNPb2mKkT1CYHI3/images/mouse/mousepoint.cur'), pointer;
+  border: 2px solid #dfdfdf;
 }
 .related-games img:hover {
   border-color: #f90;
@@ -101,26 +142,38 @@ body {
 
 /* GAME INFO SECTION */
 .info-section {
-  background: #000;
+  background: #2447f3;
   margin: 12px auto;
   padding: 8px;
   width: 1040px;
-  border: 2px solid #222;
+  border: 2px solid #2447f3;
 }
 .tabs {
   display: flex;
   margin-bottom: 8px;
 }
 .tabs button {
-  background: #111;
-  border: 1px solid #444;
+  background: #2447f3;
+  border: 1px solid #2447f3;
   color: #fff;
   padding: 6px 12px;
-  cursor: pointer;
   font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: url('https://file.garden/aJNPb2mKkT1CYHI3/images/mouse/mousepoint.cur'), pointer;
+}
+.tabs button img {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
 }
 .tabs button:hover {
-  background: #b60000;
+  background: #ffa200;
+}
+.tabs button.active {
+  background: #ffa200;
+  border-color: #ffa200;
 }
 .tab-content {
   font-size: 13px;
@@ -131,43 +184,45 @@ body {
   color: yellow;
   font-weight: bold;
 }
-.like-bar {
-  margin-top: 10px;
-  font-size: 13px;
-}
-.like-bar span.green { color: #5f5; }
-.like-bar span.red { color: #f55; }
-
-/* FOOTER */
-footer {
-  background: #000;
-  color: #777;
-  text-align: center;
-  padding: 12px;
-  font-size: 12px;
-  border-top: 2px solid #b60000;
-}
 </style>
 </head>
 <body>
 
 <!-- TOP MENU -->
 <div class="topbar">
-  <div class="logo">MultiFun</div>
-  <nav>
-    <a href="#">Home</a>
-    <a href="#">All Games</a>
-    <a href="#">Categories</a>
-    <a href="#">Random</a>
-    <a href="#">Contact</a>
-  </nav>
+    <div class="logo">
+        <img src="https://file.garden/aJNPb2mKkT1CYHI3/images/logos/multifunlogo.png" alt="MultiFun Logo" />
+    </div>
+    <div class="menu">
+        <select id="menuSelect">
+            <option value="index.html">Home</option>
+            <option value="series.html">Series</option>
+            <option value="movies.html">Movies</option>
+            <option value="nesgames.html">NES Games</option>
+            <option value="smsgames.html">Sega Master System Games</option>
+            <option value="gameboygames.html">GameBoy Games</option>
+            <option value="segamdgames.html">Sega Megadrive/Genesis Games</option>
+            <option value="snesgames.html">SNES Games</option>
+            <option value="gamegeargames.html">Sega GameGear Games</option>
+            <option value="gbcgames.html">GameBoy Color Games</option>
+            <option value="psxgames.html">Sony Playstation Games</option>
+            <option value="nintendo64games.html">Nintendo 64 Games</option>
+            <option value="gbagames.html">GameBoy Advance Games</option>
+            <option value="ndsgames.html">Nintendo DS Games</option>
+            <option value="html5games.html">HTML5 Games</option>
+            <option value="flashgames.html">Flash Games</option>
+        </select>
+        <div class="search-box">
+            <input id="searchInput" type="text" placeholder="Search..." />
+        </div>
+    </div>
 </div>
 
 <!-- MAIN CONTENT -->
 <div class="container">
   <!-- LEFT GAME AREA -->
   <div class="game-frame">
-    <div class="game-header">Play Sonic 2 PN Arcade</div>
+    <div class="game-header"></div>
     <div class="game-embed">
       <!-- Emulator inside -->
       <div style="width:100%;height:100%;max-width:100%">
@@ -192,52 +247,100 @@ footer {
   </div>
 </div>
 
-<!-- GAME INFO -->
+<!-- GAME INFO + COMMENTS -->
 <div class="info-section">
   <div class="tabs">
-    <button>Game Info</button>
-    <button>Instruction</button>
-    <button>Report Broken</button>
-    <button>Comments</button>
+    <button id="infoBtn" class="active">
+      <img src="https://file.garden/aJNPb2mKkT1CYHI3/images/icons/paperinstructionsicon.svg" alt="Info Icon"> Game Info
+    </button>
+    <button id="commentsBtn">
+      <img src="https://file.garden/aJNPb2mKkT1CYHI3/images/icons/chatcommentsicon.svg" alt="Comments Icon"> Comments
+    </button>
   </div>
   <div class="tab-content">
-    <p><b>Sonic 2 PN Arcade</b></p>
-    <p><b>Date Added:</b> 2021-10-21</p>
-    <p><b>Genres:</b> Adventure Games, Sonic Games</p>
-    <p><b>Description:</b> Sonic 2 PN Arcade is a neat Sonic The Hedgehog 2 revision that features new levels, color pallets, music, and more. This is still the beta version but it's looking good so far. This revision was created by classic sonic modder PikaNoob.</p>
-    <p><b>Game Controls:</b> <span>Enter Key</span> = Start. <span>Shift Key</span> = Select. Arrow Keys = Move. <span>Z</span> and <span>X</span> Keys are action buttons. <span>Save</span> Progress State = [Shift+F2]. <span>Load</span> Progress State = [Shift+F4].</p>
-    <div class="like-bar">
-      Do you like this game? 
-      <span class="green">👍 82%</span> 
-      <span class="red">👎</span>
+    <!-- Game Info -->
+    <div id="gameInfo">
+      <p><b>Sonic the Hedgehog</b></p>
+      <p><b>Release Date:</b> June 23, 1991</p>
+      <p><b>Category:</b> Sega Genesis</p>
+      <p><b>Description:</b> Dr. Ivo Robotnik, the mad scientist, is snatching innocent animals 
+      and turning them into evil robots! Only one tough dude can put an end to the demented 
+      scientist's fiendish scheme... Be Sonic! Be atomic!</p>
+      <p><b>Game Controls:</b> <span>Enter Key</span> = Start. <span>V</span> = Select. 
+      Arrow Keys = Move. <span>Z, X</span> and <span>S</span> Keys are action buttons.</p>
+    </div>
+
+    <!-- Comments -->
+    <div id="commentsSection" style="display:none;">
+      <div id="disqus_thread"></div>
     </div>
   </div>
 </div>
 
-<!-- FOOTER -->
-<footer>
-  MultiFun © 2025 - All rights reserved.
-</footer>
-
 <!-- Emulator Config -->
 <script>
-    EJS_player = "#game";
-    EJS_core = "segaMD";
-    EJS_startOnLoaded = true;
-    EJS_gameUrl = "https://cdn.jsdelivr.net/gh/thered72/mgfil3s9218-.@main/Sega%20Genesis/Sonic%20The%20Hedgehog%202%20(World)%20(Rev%20B)%20(1).zip";
-    EJS_pathtodata = "https://cdn.emulatorjs.org/4.2.3/data/";
-    EJS_backgroundImage = "https://cdn.jsdelivr.net/gh/thered72/mgfil3s9218-.@main/funni%20images/Sonicthehedgehog2logo.webp";
-    EJS_gameName = "SonicTheHedgehog2";
-    EJS_color = "#4a86e8";
-    EJS_language = "en-US";
-    EJS_backgroundBlur = false;
-    EJS_Buttons = {
-      fullscreen: false,
-      exitEmulation: false
-    };
+  EJS_player = "#game";
+  EJS_core = "segaMD";
+  EJS_startOnLoaded = true;
+  EJS_gameUrl = "https://cdn.jsdelivr.net/gh/thered72/mgfil3s9218-.@main/Sega%20Genesis/Sonic%20The%20Hedgehog%20(Japan%2C%20Korea)%20(1).zip";
+  EJS_pathtodata = "https://cdn.emulatorjs.org/4.2.3/data/";
+  EJS_backgroundImage = "https://cdn.jsdelivr.net/gh/thered72/mgfil3s9218-.@main/funni%20images/sonicthehedgehoglogo.webp";
+  EJS_gameName = "SonicTheHedgehog";
+  EJS_color = "#4a86e8";
+  EJS_language = "en-US";
+  EJS_backgroundBlur = false;
+  EJS_Buttons = { exitEmulation: false };
 </script>
+
+<!-- Emulator Loader -->
 <script src="https://cdn.jsdelivr.net/gh/thered72/mgfil3s9218-.@main/multifunemulatorloader.js"></script>
 
+<!-- Dropdown menu navigation -->
+<script>
+  document.getElementById('menuSelect').addEventListener('change', function() {
+    const url = this.value;
+    if (url) window.location.href = url;
+  });
+</script>
+
+<!-- Tabs + Disqus -->
+<script>
+  const infoBtn = document.getElementById("infoBtn");
+  const commentsBtn = document.getElementById("commentsBtn");
+  const gameInfo = document.getElementById("gameInfo");
+  const commentsSection = document.getElementById("commentsSection");
+  let disqusLoaded = false;
+
+  function setActiveTab(button) {
+    document.querySelectorAll(".tabs button").forEach(btn => btn.classList.remove("active"));
+    button.classList.add("active");
+  }
+
+  infoBtn.addEventListener("click", () => {
+    gameInfo.style.display = "block";
+    commentsSection.style.display = "none";
+    setActiveTab(infoBtn);
+  });
+
+  commentsBtn.addEventListener("click", () => {
+    gameInfo.style.display = "none";
+    commentsSection.style.display = "block";
+    setActiveTab(commentsBtn);
+
+    if (!disqusLoaded) {
+      var disqus_config = function () {
+        this.page.url = window.location.href;
+        this.page.identifier = window.location.pathname;
+      };
+
+      var d = document, s = d.createElement('script');
+      s.src = 'https://multi-fun-1.disqus.com/embed.js'; // your Disqus shortname
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+
+      disqusLoaded = true;
+    }
+  });
+</script>
 </body>
 </html>
-
