@@ -1,178 +1,200 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="icon" type="x-icon" href="favicon.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sonic the Hedgehog</title>
 <style>
-    body {
-        margin: 0;
-        background-color: #f5f5f5;
-        font-family: 'Comic Sans MS', cursive, sans-serif;
-        color: #333;
-    }
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+}
 
-    /* Topbar with background image */
+/* Body */
+body {
+    background-color: #f5f5f5;
+}
+
+/* Top Banner */
+.topbar {
+    width: 100%;
+    background-image: url('https://file.garden/Zt9IAS54OBzeioet/images/banners/how%20i%20want%20it%20to%20look.PNG');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+}
+
+/* Logo */
+.topbar .logo img {
+    height: 60px;
+}
+
+/* Menu + Search */
+.menu-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.menu-container select {
+    background-color: rgba(0,0,0,0.6);
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.menu-container select:hover, .menu-container select:focus {
+    background-color: rgba(0,0,0,0.8);
+    outline: none;
+}
+
+/* Search Box */
+.search-box {
+    background-color: rgba(255,255,255,0.85);
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+.search-box input {
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #333;
+    width: 180px;
+    font-size: 14px;
+}
+
+/* Game Container */
+.game-container {
+    max-width: 1000px;
+    margin: 30px auto;
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+/* Emulator */
+#game {
+    width: 100%;
+    height: 600px;
+    background-color: black;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+/* Title */
+.game-title {
+    font-size: 32px;
+    color: #1a36c7;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+/* Description */
+.game-description {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #444;
+    margin-bottom: 25px;
+}
+
+/* Buttons */
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+}
+
+.btn {
+    background-color: #1a36c7;
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s ease;
+}
+
+.btn:hover {
+    background-color: #2447f3;
+    transform: translateY(-2px);
+}
+
+.btn img {
+    width: 18px;
+    height: 18px;
+}
+
+/* Instructions */
+.instructions {
+    display: none;
+    text-align: left;
+    background-color: #eef0f5;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Comments */
+#comments {
+    display: none;
+    margin-top: 20px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 12px;
+    background-color: #1a36c7;
+    color: #fff;
+    font-size: 12px;
+    border-top: 3px solid #2447f3;
+    margin-top: 30px;
+    user-select: none;
+}
+
+/* Responsive */
+@media(max-width: 768px) {
     .topbar {
-        background-image: url('https://file.garden/aJNPb2mKkT1CYHI3/images/banners/topbar-background.png');
-        background-size: cover;
-        background-position: center;
-        padding: 10px 20px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-
-    .logo img {
-        height: 50px;
-        display: block;
-    }
-
-    .menu {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-    }
-
-    select {
-        background-color: rgba(0,0,0,0.5);
-        color: white;
-        border: none;
-        padding: 8px 12px;
-        font-size: 14px;
-        border-radius: 4px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-        font-family: 'Comic Sans MS', cursive, sans-serif;
-    }
-    select:hover, select:focus {
-        background-color: rgba(0,0,0,0.7);
-        outline: none;
-    }
-
-    .search-box {
-        display: flex;
-        align-items: center;
-        background-color: rgba(255,255,255,0.85);
-        padding: 4px 8px;
-        border-radius: 4px;
-    }
-
-    .search-box input {
-        border: none;
-        outline: none;
-        padding: 5px;
-        width: 180px;
-        font-family: 'Comic Sans MS', cursive, sans-serif;
-        background-color: transparent;
-        color: #333;
-    }
-    .search-box input::placeholder {
-        color: #666;
-    }
-
-    /* Game container */
-    .game-container {
-        max-width: 1000px;
-        margin: 30px auto;
-        background-color: #ffffff;
-        padding: 20px;
-        border-radius: 8px;
-        text-align: center;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-    }
-
-    #game {
-        width: 100%;
-        height: 600px;
-        background-color: black;
-        border-radius: 6px;
-        margin-bottom: 20px;
-    }
-
-    .game-title {
-        font-size: 32px;
-        font-weight: bold;
-        color: #1a36c7;
-        margin-bottom: 12px;
-    }
-
-    .game-description {
-        font-size: 16px;
-        line-height: 1.5;
-        color: #444;
-        margin-bottom: 20px;
-    }
-
-    .buttons {
-        display: flex;
+        flex-direction: column;
         gap: 10px;
-        justify-content: center;
-        flex-wrap: wrap;
-        margin-bottom: 15px;
     }
-
-    .btn {
-        background-color: #1a36c7;
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 14px;
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        transition: all 0.2s ease;
+    .menu-container {
+        flex-direction: column;
+        gap: 8px;
     }
-
-    .btn:hover {
-        background-color: #2447f3;
-        transform: translateY(-2px);
+    .search-box input {
+        width: 150px;
     }
-
-    .btn img {
-        height: 18px;
-        width: 18px;
-    }
-
-    .instructions {
-        display: none;
-        background-color: #eef0f5;
-        padding: 10px;
-        margin-top: 10px;
-        border-radius: 6px;
-        font-size: 14px;
-        color: #333;
-        text-align: left;
-    }
-
-    #comments {
-        display: none;
-        margin-top: 20px;
-    }
-
-    footer {
-        text-align: center;
-        padding: 12px;
-        background-color: #1a36c7;
-        color: #fff;
-        font-size: 12px;
-        border-top: 3px solid #2447f3;
-        user-select: none;
-        margin-top: 30px;
-    }
+}
 </style>
 </head>
 <body>
 
-<!-- Topbar -->
+<!-- Top Banner -->
 <div class="topbar">
     <div class="logo">
-        <a href="index.html"><img src="https://file.garden/aJNPb2mKkT1CYHI3/images/logos/multifunlogo.png" alt="MultiFun" /></a>
+        <a href="index.html"><img src="https://file.garden/aJNPb2mKkT1CYHI3/images/logos/multifunlogo.png" alt="MultiFun"></a>
     </div>
-    <div class="menu">
+    <div class="menu-container">
         <select id="menuSelect">
             <option value="index.html">Home</option>
             <option value="series.html">Series</option>
@@ -193,15 +215,14 @@
         </select>
 
         <div class="search-box">
-            <input type="text" placeholder="Search..." />
+            <input type="text" placeholder="Search...">
         </div>
     </div>
 </div>
 
-<!-- Game Content -->
+<!-- Game Section -->
 <div class="game-container">
-
-    <div style="width:100%; height:600px; max-width:100%">
+    <div style="width:100%; height:600px; max-width:100%;">
         <div id="game"></div>
     </div>
 
@@ -216,26 +237,23 @@
         EJS_color = "#2447f3";
         EJS_language = "en-US";
         EJS_backgroundBlur = false;
-        EJS_Buttons = {
-            exitEmulation: false,
-        };
+        EJS_Buttons = { exitEmulation: false };
     </script>
     <script src="https://cdn.jsdelivr.net/gh/thered72/mgfil3s9218-.@main/multifunemulatorloader.js"></script>
 
     <div class="game-title">Sonic the Hedgehog</div>
 
     <div class="game-description">
-        <p>Sonic the Hedgehog is the first of many games starring Sega's premier hedgehog, Sonic. It's a side-scrolling platform game with a difference: speed. Sonic rushes through levels with incredible speed, allowing him to traverse loops and jumps with ease.
-
-The plot of the game is simple. The evil Dr. Robotnik has captured many of Sonic's animal friends and trapped them inside robots. Fortunately, Sonic can free his friends by destroying the robots with his spin attack. Meanwhile, Dr. Robotnik is trying to control the all-powerful chaos emeralds. Sonic must grab them before he does in the 3D rotating bonus levels.</p>
+        Sonic the Hedgehog is the first of many games starring Sega's premier hedgehog, Sonic. It's a side-scrolling platform game with a difference: speed. Sonic rushes through levels with incredible speed, allowing him to traverse loops and jumps with ease.<br><br>
+        The plot is simple. The evil Dr. Robotnik has captured many of Sonic's friends and trapped them inside robots. Sonic must free them and stop Robotnik from collecting the Chaos Emeralds.
     </div>
 
     <div class="buttons">
         <button class="btn" onclick="toggleInstructions()">
-            <img src="https://file.garden/aJNPb2mKkT1CYHI3/images/icons/paperinstructionsicon.svg" alt="Instructions" /> Instructions
+            <img src="https://file.garden/aJNPb2mKkT1CYHI3/images/icons/paperinstructionsicon.svg" alt="Instructions"> Instructions
         </button>
         <button class="btn" onclick="toggleComments()">
-            <img src="https://file.garden/aJNPb2mKkT1CYHI3/images/icons/chatcommentsicon.svg" alt="Comments" /> Comments
+            <img src="https://file.garden/aJNPb2mKkT1CYHI3/images/icons/chatcommentsicon.svg" alt="Comments"> Comments
         </button>
     </div>
 
@@ -254,44 +272,34 @@ The plot of the game is simple. The evil Dr. Robotnik has captured many of Sonic
         <div id="disqus_thread"></div>
         <script>
             var disqus_config = function () {
-                this.page.url = "https://theredguy90.github.io/multifun/sonic1.html";
+                this.page.url = window.location.href;
                 this.page.identifier = "sonic1.html";
             };
-
-            (function () {
-                var d = document,
-                    s = d.createElement("script");
-                s.src = "https://multi-fun-1.disqus.com/embed.js";
-                s.setAttribute("data-timestamp", +new Date());
+            (function() {
+                var d = document, s = d.createElement('script');
+                s.src = 'https://multi-fun-1.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
                 (d.head || d.body).appendChild(s);
             })();
         </script>
-        <noscript>
-            Por favor, habilita JavaScript para ver los
-            <a href="https://disqus.com" rel="nofollow">comments</a>.
-        </noscript>
     </div>
-
 </div>
 
 <footer>© MultiFun 2025. All rights reserved.</footer>
 
 <script>
-    function toggleInstructions() {
-        const inst = document.getElementById("instructions");
-        inst.style.display = inst.style.display === "none" || inst.style.display === "" ? "block" : "none";
-    }
-
-    function toggleComments() {
-        const com = document.getElementById("comments");
-        com.style.display = com.style.display === "none" || com.style.display === "" ? "block" : "none";
-    }
-
-    document.getElementById('menuSelect').addEventListener('change', function() {
-        window.location.href = this.value;
-    });
+function toggleInstructions() {
+    const inst = document.getElementById("instructions");
+    inst.style.display = (inst.style.display === "block") ? "none" : "block";
+}
+function toggleComments() {
+    const com = document.getElementById("comments");
+    com.style.display = (com.style.display === "block") ? "none" : "block";
+}
+document.getElementById('menuSelect').addEventListener('change', function() {
+    window.location.href = this.value;
+});
 </script>
-
 </body>
 </html>
 
