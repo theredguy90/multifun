@@ -108,13 +108,14 @@ select {
   display: flex;
   justify-content: center;
   align-items: center;
-  aspect-ratio: 4/3;  /* maintains 4:3 ratio */
   width: 100%;
+  height: 600px; /* keep height, adjust as needed */
 }
 #gameIframe {
   width: 100%;
   height: 100%;
   border: none;
+  object-fit: fill; /* stretch to fill, no black bars */
 }
 
 /* SIDEBAR */
@@ -204,7 +205,6 @@ select {
   <!-- LEFT GAME AREA -->
   <div class="game-frame">
     <div class="game-header">
-      
       <button class="fullscreen-btn" id="fullscreenBtn" title="Fullscreen">
         <img src="https://file.garden/aJNPb2mKkT1CYHI3/images/icons/fullscreen.svg" alt="Fullscreen">
       </button>
