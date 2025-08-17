@@ -1,0 +1,374 @@
+<!DOCTYPE html>  
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MultiFun - Play Sonic the Hedgehog</title>
+<link rel="icon" href="favicon.png">
+<style>
+/* RESET */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* BODY cursor */
+body {
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  background-color: #dfdfdf;
+  color: #fff;
+
+  cursor: url('https://file.garden/aJNPb2mKkT1CYHI3/images/mouse/mouse.cur') 0 0,
+         url('https://file.garden/aJNPb2mKkT1CYHI3/images/mouse/mouse.png') 0 0,
+         auto;
+}
+
+/* Interactive cursor */
+a, button, select, input, .related-games img {
+  cursor: url('https://file.garden/aJNPb2mKkT1CYHI3/images/mouse/mousepoint.cur') 0 0,
+         url('https://file.garden/aJNPb2mKkT1CYHI3/images/mouse/mousepoint.png') 0 0,
+         pointer;
+}
+
+
+/* TOP NAVBAR */
+.topbar {
+  background-color: #111;
+  background-image: url('https://file.garden/aJNPb2mKkT1CYHI3/images/WEBSITE/costume3.svg');
+  background-repeat: repeat-x;
+  background-position: center;
+  background-size: auto 100%;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 3px solid rgba(0,0,0,0.25);
+}
+.logo img {
+  height: 45px;
+  display: block;
+}
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+select {
+  background-color: rgba(0, 0, 0, 0.55);
+  color: white;
+  border: none;
+  padding: 8px;
+  font-size: 14px;
+  border-radius: 4px;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  cursor: url('https://file.garden/aJNPb2mKkT1CYHI3/images/mouse/mousepoint.cur'), pointer;
+  transition: background-color 0.2s ease;
+}
+select:hover, select:focus {
+  background-color: rgba(0, 0, 0, 0.75);
+  outline: none;
+}
+.search-box {
+  display: flex;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.55);
+  padding: 5px;
+  border-radius: 4px;
+}
+.search-box input {
+  border: none;
+  outline: none;
+  padding: 5px;
+  width: 180px;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  background-color: rgba(255,255,255,0.9);
+  color: #333;
+  border-radius: 3px;
+  transition: background-color 0.2s ease;
+}
+.search-box input::placeholder { color: #666; }
+.search-box input:focus { background-color: #fff; }
+
+/* MAIN LAYOUT */
+.container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  gap: 12px;
+}
+
+/* MAIN GAME AREA */
+.game-frame {
+  width: 800px;
+  background: #222;
+  border: 2px solid #2447f3;
+}
+.game-header {
+  background: #2447f3;
+  color: #fff;
+  padding: 6px 10px;
+  font-weight: bold;
+  font-size: 14px;
+}
+.game-embed {
+  background: #111;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 600px; /* 4:3 ratio */
+}
+#game {
+  width: 100%;
+  height: 100%;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 220px;
+}
+.sidebar-header {
+  background: #2447f3;
+  padding: 6px 10px;
+  font-weight: bold;
+  font-size: 14px;
+}
+.related-games {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px;
+  padding: 6px;
+  background: #dfdfdf;
+}
+.related-games img {
+  width: 100%;
+  border-radius: 4px;
+  cursor: url('https://file.garden/aJNPb2mKkT1CYHI3/images/mouse/mousepoint.cur'), pointer;
+  border: 2px solid #dfdfdf;
+}
+.related-games img:hover {
+  border-color: #f90;
+}
+
+/* GAME INFO SECTION */
+.info-section {
+  background: #2447f3;
+  margin: 12px auto;
+  padding: 8px;
+  width: 1040px;
+  border: 2px solid #2447f3;
+}
+.tabs {
+  display: flex;
+  margin-bottom: 8px;
+}
+.tabs button {
+  background: #2447f3;
+  border: 1px solid #2447f3;
+  color: #fff;
+  padding: 6px 12px;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: url('https://file.garden/aJNPb2mKkT1CYHI3/images/mouse/mousepoint.cur'), pointer;
+}
+.tabs button img {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+}
+.tabs button:hover {
+  background: #ffa200;
+}
+.tabs button.active {
+  background: #ffa200;
+  border-color: #ffa200;
+}
+.tab-content {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #ddd;
+}
+.tab-content span {
+  color: yellow;
+  font-weight: bold;
+}
+</style>
+</head>
+<body>
+
+<!-- TOP MENU -->
+<div class="topbar">
+    <div class="logo">
+        <img src="https://file.garden/aJNPb2mKkT1CYHI3/images/logos/multifunlogo.png" alt="MultiFun Logo" />
+    </div>
+        <div class="search-box">
+            <input id="searchInput" type="text" placeholder="Search..." />
+        </div>
+    </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="container">
+  <!-- LEFT GAME AREA -->
+  <div class="game-frame">
+    <div class="game-header"></div>
+    <div class="game-embed">
+      <!-- Emulator inside -->
+      <div style="width:100%;height:100%;max-width:100%">
+        <div id="game"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <div class="sidebar-header">Related Games</div>
+    <div class="related-games">
+      <a href="sonic1.html">
+      <img src="https://file.garden/aJNPb2mKkT1CYHI3/images/posters/segagenesis/sonic1.png">
+      </a>
+      <a href="sonic3.html">
+      <img src="https://file.garden/aJNPb2mKkT1CYHI3/images/posters/segagenesis/sonic3.png">
+      </a>
+       <a href="sonicandknuckles.html">
+      <img src="https://file.garden/aJNPb2mKkT1CYHI3/images/posters/segagenesis/sonicandknuckles.png">
+      </a>
+      <a href="sonic3dblast.html">
+      <img src="https://file.garden/aJNPb2mKkT1CYHI3/images/posters/segagenesis/sonic3dblast.png">
+      </a>
+    </div>
+    </div>
+  </div>
+<!-- GAME INFO + COMMENTS -->
+<div class="info-section">
+  <div class="tabs">
+    <button id="infoBtn" class="active">
+      <img src="https://file.garden/aJNPb2mKkT1CYHI3/images/icons/paperinstructionsicon.svg" alt="Info Icon"> Game Info
+    </button>
+    <button id="commentsBtn">
+      <img src="https://file.garden/aJNPb2mKkT1CYHI3/images/icons/chatcommentsicon.svg" alt="Comments Icon"> Comments
+    </button>
+  </div>
+  <div class="tab-content">
+    <!-- Game Info -->
+    <div id="gameInfo">
+      <p><b>Sonic the Hedgehog 2</b></p>
+      <p><b>Release Date:</b> November 21, 1992</p>
+      <p><b>Category:</b> Sega Genesis</p>
+      <p><b>Description:</b>Super Speed! Sonic's back and better than ever. He's a blur in blue! A blaze of action! With his new Spin Dash. And a new, fabulous friend, "Tails" Miles Prower. You won't believe it 'til you see it. And when you play, you won't stop. Super Play! Defy gravity in hair-raising loop-de-loops. Grab Power Sneakers and race like lightning through the mazes. Dash in a dizzying whirl across corkscrew speedway. Bounce like a pinball through the bumpers and springs of the amazing Zones. All at break-neck speed! Super Power! Sonic's attitude is can-do. The mad scientist Dr. Robotnik is planning a world takeover. Sonic gets tough in the fight to save his friends and squash Robotnik for good!</p>
+      <p><b>Game Controls:</b> <span>Enter Key</span> = Start. <span>V</span> = Select. 
+      Arrow Keys = Move. <span>Z, X</span> and <span>S</span> Keys are action buttons.</p>
+    </div>
+
+    <!-- Comments -->
+    <div id="commentsSection" style="display:none;">
+      <div id="disqus_thread"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Emulator Config -->
+<script>
+  EJS_player = "#game";
+  EJS_core = "segaMD";
+  EJS_gameUrl = "https://cdn.jsdelivr.net/gh/thered72/mgfil3s9218-.@main/Sega%20Genesis/Sonic%20The%20Hedgehog%202%20(World)%20(Rev%20B)%20(1).zip";
+            EJS_pathtodata = "https://cdn.emulatorjs.org/4.2.3/data/";
+EJS_backgroundImage = "https://cdn.jsdelivr.net/gh/thered72/mgfil3s9218-.@main/funni%20images/Sonicthehedgehog2logo.webp";
+            EJS_gameName = "SonicTheHedgehog2"
+  EJS_color = "#4a86e8";
+  EJS_language = "en-US";
+  EJS_backgroundBlur = false;
+  EJS_Buttons = { exitEmulation: false };
+</script>
+
+<!-- Emulator Loader -->
+<script src="https://cdn.jsdelivr.net/gh/thered72/mgfil3s9218-.@main/multifunemulatorloader.js"></script>
+
+<!-- Dropdown menu navigation -->
+<script>
+  document.getElementById('menuSelect').addEventListener('change', function() {
+    const url = this.value;
+    if (url) window.location.href = url;
+  });
+</script>
+
+<!-- Tabs + Disqus -->
+<script>
+  const infoBtn = document.getElementById("infoBtn");
+  const commentsBtn = document.getElementById("commentsBtn");
+  const gameInfo = document.getElementById("gameInfo");
+  const commentsSection = document.getElementById("commentsSection");
+  let disqusLoaded = false;
+
+  function setActiveTab(button) {
+    document.querySelectorAll(".tabs button").forEach(btn => btn.classList.remove("active"));
+    button.classList.add("active");
+  }
+
+  infoBtn.addEventListener("click", () => {
+    gameInfo.style.display = "block";
+    commentsSection.style.display = "none";
+    setActiveTab(infoBtn);
+  });
+
+  commentsBtn.addEventListener("click", () => {
+    gameInfo.style.display = "none";
+    commentsSection.style.display = "block";
+    setActiveTab(commentsBtn);
+
+    if (!disqusLoaded) {
+      // ✅ define disqus_config here
+      window.disqus_config = function () {
+        this.page.url = window.location.href;
+        this.page.identifier = window.location.pathname;
+      };
+
+      var d = document, s = d.createElement('script');
+      s.src = 'https://multi-fun.disqus.com/embed.js'; // replace with your real shortname
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+
+      disqusLoaded = true;
+    }
+  });
+</script>
+<script>
+  // List of your game pages (add more as needed)
+  const gamePages = [
+    { name: "Sonic the Hedgehog", url: "sonic1.html" },
+    { name: "Sonic the Hedgehog 2", url: "sonic2.html" },
+    { name: "Sonic the Hedgehog 3", url: "sonic3.html" },
+    { name: "Sonic & Knuckles", url: "sonicandknuckles.html" },
+    { name: "Sonic 3D Blast", url: "sonic3dblast.html" },
+    // add more here...
+  ];
+
+  const searchInput = document.getElementById("searchInput");
+
+  searchInput.addEventListener("keypress", function (e) {
+    if (e.key === "Enter") {
+      const query = searchInput.value.toLowerCase().trim();
+      const match = gamePages.find(game => game.name.toLowerCase().includes(query));
+
+      if (match) {
+        // Redirect to matching game page
+        window.location.href = match.url;
+      } else {
+        alert("No game found for: " + query);
+      }
+    }
+  });
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
