@@ -199,10 +199,12 @@ select:hover, select:focus {
     <div class="logo">
         <img src="https://file.garden/aJNPb2mKkT1CYHI3/images/logos/multifunlogo.png" alt="MultiFun Logo" />
     </div>
-        <div class="search-box">
-            <input id="searchInput" type="text" placeholder="Search..." />
-        </div>
-    </div>
+        <div class="search-box" style="position:relative;">
+  <input id="searchInput" type="text" placeholder="Search..." />
+  <div id="searchResults" 
+       style="position:absolute; top:100%; left:0; right:0; background:white; color:#000; border-radius:4px; max-height:200px; overflow-y:auto; display:none; z-index:999; font-family:'Comic Sans MS', cursive;">
+  </div>
+</div>
 </div>
 
 <!-- MAIN CONTENT -->
@@ -331,34 +333,68 @@ EJS_backgroundImage = "https://cdn.jsdelivr.net/gh/thered72/mgfil3s9218-.@main/f
   });
 </script>
 <script>
-  // List of your game pages (add more as needed)
+  // List of your game pages
   const gamePages = [
-    { name: "Sonic the Hedgehog", url: "sonic1.html" },
-    { name: "Sonic the Hedgehog 2", url: "sonic2.html" },
-    { name: "Sonic the Hedgehog 3", url: "sonic3.html" },
-    { name: "Sonic & Knuckles", url: "sonicandknuckles.html" },
-    { name: "Sonic 3D Blast", url: "sonic3dblast.html" },
+    { name: "Sonic the Hedgehog", url: "sonic1.html", img: "https://file.garden/aJNPb2mKkT1CYHI3/images/posters/segagenesis/sonic1.png" },
+    { name: "Sonic the Hedgehog 2", url: "sonic2.html", img: "https://file.garden/aJNPb2mKkT1CYHI3/images/posters/segagenesis/sonic2.png" },
+    { name: "Sonic the Hedgehog 3", url: "sonic3.html", img: "https://file.garden/aJNPb2mKkT1CYHI3/images/posters/segagenesis/sonic3.png" },
+    { name: "Sonic & Knuckles", url: "sonicandknuckles.html", img: "https://file.garden/aJNPb2mKkT1CYHI3/images/posters/segagenesis/sonicandknuckles.png" },
+    { name: "Sonic 3D Blast", url: "sonic3dblast.html", img: "https://file.garden/aJNPb2mKkT1CYHI3/images/posters/segagenesis/sonic3dblast.png" },
     // add more here...
   ];
 
   const searchInput = document.getElementById("searchInput");
+  const searchResults = document.getElementById("searchResults");
 
-  searchInput.addEventListener("keypress", function (e) {
-    if (e.key === "Enter") {
-      const query = searchInput.value.toLowerCase().trim();
-      const match = gamePages.find(game => game.name.toLowerCase().includes(query));
+  searchInput.addEventListener("input", function () {
+    const query = this.value.toLowerCase().trim();
+    searchResults.innerHTML = "";
 
-      if (match) {
-        // Redirect to matching game page
-        window.location.href = match.url;
-      } else {
-        alert("No game found for: " + query);
-      }
+    if (query.length === 0) {
+      searchResults.style.display = "none";
+      return;
+    }
+
+    const matches = gamePages.filter(game => game.name.toLowerCase().includes(query));
+
+    if (matches.length > 0) {
+      matches.forEach(game => {
+        const item = document.createElement("a");
+        item.href = game.url;
+        item.style.display = "flex";
+        item.style.alignItems = "center";
+        item.style.padding = "5px";
+        item.style.gap = "6px";
+        item.style.textDecoration = "none";
+        item.style.color = "#000";
+        item.style.borderBottom = "1px solid #ddd";
+
+        item.innerHTML = `
+          <img src="${game.img}" style="width:40px;height:40px;border-radius:4px;border:1px solid #ccc;">
+          <span>${game.name}</span>
+        `;
+
+        item.addEventListener("mouseover", () => { item.style.background = "#eee"; });
+        item.addEventListener("mouseout", () => { item.style.background = "transparent"; });
+
+        searchResults.appendChild(item);
+      });
+      searchResults.style.display = "block";
+    } else {
+      searchResults.style.display = "none";
+    }
+  });
+
+  // Hide results when clicking outside
+  document.addEventListener("click", function (e) {
+    if (!searchResults.contains(e.target) && e.target !== searchInput) {
+      searchResults.style.display = "none";
     }
   });
 </script>
 </body>
 </html>
+
 
 
 
