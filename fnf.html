@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MultiFun - Play Sonic the Hedgehog</title>
+<title>MultiFun - Playin on a Friday Night Yeah</title>
 <link rel="icon" href="favicon.png">
 <style>
 /* RESET */
@@ -105,17 +105,18 @@ select {
 }
 .game-embed {
   background: #111;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 100%;
-  height: 600px; /* keep height, adjust as needed */
+  height: 0;
+  padding-bottom: 75%; /* 4:3 ratio */
+  position: relative;
 }
 #gameIframe {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   border: none;
-  object-fit: fill; /* stretch to fill, no black bars */
 }
 
 /* SIDEBAR */
@@ -145,7 +146,7 @@ select {
   background: #2447f3;
   margin: 12px auto;
   padding: 8px;
-  width: 1040px;
+  width: 960px; /* match game container width */
   border: 2px solid #2447f3;
 }
 .tabs { display: flex; margin-bottom: 8px; }
@@ -210,7 +211,6 @@ select {
       </button>
     </div>
     <div class="game-embed">
-      <!-- Replace emulator with iframe -->
       <iframe id="gameIframe" src="https://elredshoes1991.github.io/MfF1l3ssW3b921-.-/clasicoshtml/fnf.html" allowfullscreen></iframe>
     </div>
   </div>
