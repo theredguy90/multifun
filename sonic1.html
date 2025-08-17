@@ -333,8 +333,36 @@ select:hover, select:focus {
     }
   });
 </script>
+  <script>
+  // List of your game pages (add more as needed)
+  const gamePages = [
+    { name: "Sonic the Hedgehog", url: "sonic1.html" },
+    { name: "Sonic the Hedgehog 2", url: "sonic2.html" },
+    { name: "Sonic the Hedgehog 3", url: "sonic3.html" },
+    { name: "Sonic & Knuckles", url: "sonicandknuckles.html" },
+    { name: "Sonic 3D Blast", url: "sonic3dblast.html" },
+    // add more here...
+  ];
+
+  const searchInput = document.getElementById("searchInput");
+
+  searchInput.addEventListener("keypress", function (e) {
+    if (e.key === "Enter") {
+      const query = searchInput.value.toLowerCase().trim();
+      const match = gamePages.find(game => game.name.toLowerCase().includes(query));
+
+      if (match) {
+        // Redirect to matching game page
+        window.location.href = match.url;
+      } else {
+        alert("No game found for: " + query);
+      }
+    }
+  });
+</script>
 </body>
 </html>
+
 
 
 
