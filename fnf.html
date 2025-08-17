@@ -1,4 +1,4 @@
-<!DOCTYPE html>  
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -75,7 +75,8 @@ select {
 
 /* MAIN GAME AREA */
 .game-frame {
-  width: 800px;
+  width: 100%;
+  max-width: 960px;
   background: #222;
   border: 2px solid #2447f3;
 }
@@ -97,7 +98,7 @@ select {
 .fullscreen-btn img {
   width: 20px;
   height: 20px;
-  filter: invert(1); /* makes icon white */
+  filter: invert(1);
 }
 .fullscreen-btn:hover img {
   filter: invert(81%) sepia(98%) saturate(330%) hue-rotate(358deg) brightness(102%) contrast(105%);
@@ -107,7 +108,8 @@ select {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 600px; /* 4:3 ratio */
+  aspect-ratio: 4/3;  /* maintains 4:3 ratio */
+  width: 100%;
 }
 #gameIframe {
   width: 100%;
@@ -157,8 +159,7 @@ select {
   gap: 6px;
 }
 .tabs button img { width: 16px; height: 16px; }
-.tabs button:hover,
-.tabs button.active {
+.tabs button:hover, .tabs button.active {
   background: #ffa200;
   border-color: #ffa200;
 }
@@ -203,7 +204,7 @@ select {
   <!-- LEFT GAME AREA -->
   <div class="game-frame">
     <div class="game-header">
-      Friday Night Funkin
+      
       <button class="fullscreen-btn" id="fullscreenBtn" title="Fullscreen">
         <img src="https://file.garden/aJNPb2mKkT1CYHI3/images/icons/fullscreen.svg" alt="Fullscreen">
       </button>
@@ -245,7 +246,6 @@ select {
       <p><b>Description:</b>Your girlfriend's dad has challenged you to beat him at his own game if you wanna get with her. Though it won't be easy to out-sing an ex rockstar. And even once you're done with his dumb ass, seems like there's gonna be a lotta others looking to get in your way.</p>
       <p><b>Game Controls:</b> <span>Arrow Keys</span> = Move. <span>Z, X, S</span> = Actions.</p>
     </div>
-
     <!-- Comments -->
     <div id="commentsSection" style="display:none;">
       <div id="disqus_thread"></div>
